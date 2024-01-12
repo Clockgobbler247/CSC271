@@ -99,10 +99,10 @@ sudo usermod -aG allstaff webdev1,ceditor,testusr
 
 # Creating directories and movinf .conf and .html files
 sudo mkdir -p /var/www/boofblasters/{history,staff}
-sudo scp /etc/scripts/Proj_1/boofblasters_index.html /var/www/boofblasters/boofblasters_index.html
-sudo scp /etc/scripts/Proj_1/boofblasters_hist_index.html /var/www/boofblasters/history/boofblasters_hist_index.html
-sudo scp /etc/scripts/Proj_1/boofblasters_staff_index.html /var/www/boofblasters/staff/boofblasters_staff_index.html
-sudo scp /etc/scripts/Proj_1/boofblasters.conf /etc/apache2/sites-available/boofblasters.conf
+sudo scp /etc/scripts/CSC271/Proj_1/boofblasters_index.html /var/www/boofblasters/boofblasters_index.html
+sudo scp /etc/scripts/CSC271/Proj_1/boofblasters_hist_index.html /var/www/boofblasters/history/boofblasters_hist_index.html
+sudo scp /etc/scripts/CSC271/Proj_1/boofblasters_staff_index.html /var/www/boofblasters/staff/boofblasters_staff_index.html
+sudo scp /etc/scripts/CSC271/Proj_1/boofblasters.conf /etc/apache2/sites-available/boofblasters.conf
 sudo ln -s /etc/apache2/sites-available/boofblasters.conf /etc/apache2/sites-enabled/boofblasters.conf
 
 # Changing permissions
