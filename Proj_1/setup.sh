@@ -87,10 +87,26 @@ for user_cred in "${user_credentials[@]}"; do
         interact
     "
 done
+
+# Creating Groups and assigning users
+sudo groupadd developers
+sudo groupadd editors
+sudo groupadd allstaff
+sudo usermod -aG developers webdev1
+sudo usermod -aG editors ceditor
+sudo usermod -aG allstaff webdev1,ceditor,testusr
+
+
 # Creating directories and movinf .conf and .html files
 sudo mkdir -p /var/www/boofblasters/{history,staff}
 sudo scp /etc/scripts/Proj_1/boofblasters_index.html /var/www/boofblasters/boofblasters_index.html
 sudo scp /etc/scripts/Proj_1/boofblasters_hist_index.html /var/www/boofblasters/history/boofblasters_hist_index.html
 sudo scp /etc/scripts/Proj_1/boofblasters_staff_index.html /var/www/boofblasters/staff/boofblasters_staff_index.html
 sudo scp /etc/scripts/Proj_1/boofblasters.conf /etc/apache2/sites-available/boofblasters.conf
-sudo ln -s /etc/apache2/sites-available/boofblasters.conf /etc/apache2/sites-enabled
+sudo ln -s /etc/apache2/sites-available/boofblasters.conf /etc/apache2/sites-enabled/boofblasters.conf
+
+# Changing permissions
+sudo chown -R root:developers /etc/apache2/
+sudo chown -R root:editors /var/www/
+sudo chmod -R 771 /etc/apache2/
+sudo chmod -R 771 /var/www/
