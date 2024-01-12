@@ -64,3 +64,33 @@ else
   echo "$desired_line1" | sudo tee -a /etc/fstab > /dev/null
   echo "The line has been added to /etc/fstab."
 fi
+
+# Creating users
+user_credentials=(
+    "ceditor:changeme"
+    "webdev1:changeme"
+    "testusr:changeme"
+)
+
+# Loop through the usernames and passwords and create each user
+for user_cred in "${user_credentials[@]}"; do
+    username=$(echo "$user_cred" | cut -d':' -f1)
+    password=$(echo "$user_cred" | cut -d':' -f2)
+
+    # Use expect to interact and provide the password
+    expect -c "
+        spawn sudo adduser --gecos "" $username
+        expect \"New password:\"
+        send \"$password\r\"
+        expect \"Retype new password:\"
+        send \"$password\r\"
+        interact
+    "
+done
+# Creating directories and movinf .conf and .html files
+sudo mkdir -p /var/www/boofblasters/{history,staff}
+sudo scp /etc/scripts/Proj_1/boofblasters_index.html /var/www/boofblasters/boofblasters_index.html
+sudo scp /etc/scripts/Proj_1/boofblasters_hist_index.html /var/www/boofblasters/history/boofblasters_hist_index.html
+sudo scp /etc/scripts/Proj_1/boofblasters_staff_index.html /var/www/boofblasters/staff/boofblasters_staff_index.html
+sudo scp /etc/scripts/Proj_1/boofblasters.conf /etc/apache2/sites-available/boofblasters.conf
+sudo ln -s /etc/apache2/sites-available/boofblasters.conf /etc/apache2/sites-enabled
