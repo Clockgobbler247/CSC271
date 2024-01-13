@@ -90,9 +90,7 @@ sudo groupadd editors
 sudo groupadd allstaff
 sudo usermod -aG developers webdev1
 sudo usermod -aG editors ceditor
-sudo usermod -aG allstaff webdev1
-sudo usermod -aG allstaff ceditor
-sudo usermod -aG allstaff testusr
+sudo usermod -aG editors www-data
 
 
 # Creating directories and movinf .conf and .html files
@@ -102,6 +100,12 @@ sudo scp /etc/scripts/CSC271/Proj_1/boofblasters_history_index.html /var/www/boo
 sudo scp /etc/scripts/CSC271/Proj_1/boofblasters_staff_index.html /var/www/boofblasters/staff/index.html
 sudo scp /etc/scripts/CSC271/Proj_1/boofblasters.conf /etc/apache2/sites-available/boofblasters.conf
 sudo ln -s /etc/apache2/sites-available/boofblasters.conf /etc/apache2/sites-enabled/boofblasters.conf
+
+#Setting permissions
+sudo chown -R root:developers /etc/apache2/
+sudo chown -R root:editors /var/www/
+sudo chmod -R 770 /etc/apache2/
+sudo chmod -R 770 /var/www/
 
 # Restart system services
 sudo systemctl restart apache2
