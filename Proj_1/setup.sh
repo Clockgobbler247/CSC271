@@ -66,26 +66,12 @@ else
 fi
 
 # Creating users
-user_credentials=(
-    "ceditor:changeme"
-    "webdev1:changeme"
-    "testusr:changeme"
-)
+sudo adduser --disabled-password --gecos "" {webdev1,ceditor,testusr}
 
-# Loop through the usernames and passwords and create each user
-for user_cred in "${user_credentials[@]}"; do
-    username=$(echo "$user_cred" | cut -d':' -f1)
-    password=$(echo "$user_cred" | cut -d':' -f2)
+USERNAME_LIST="webdev1 ceditor testusr"
 
-    # Use expect to interact and provide the password
-    expect -c "
-        spawn sudo adduser --gecos "" $username
-        expect \"New password:\"
-        send \"$password\r\"
-        expect \"Retype new password:\"
-        send \"$password\r\"
-        interact
-    "
+for username in $USERNAME_LIST; do
+    echo -e "$username\nchangeme\nchangeme" | passwd $username
 done
 
 # Creating Groups and assigning users
@@ -94,13 +80,13 @@ sudo groupadd editors
 sudo groupadd allstaff
 sudo usermod -aG developers webdev1
 sudo usermod -aG editors ceditor
-sudo usermod -aG allstaff webdev1,ceditor,testusr
+sudo usermod -aG allstaff {webdev1,ceditor,testusr}
 
 
 # Creating directories and movinf .conf and .html files
 sudo mkdir -p /var/www/boofblasters/{history,staff}
 sudo scp /etc/scripts/CSC271/Proj_1/boofblasters_index.html /var/www/boofblasters/boofblasters_index.html
-sudo scp /etc/scripts/CSC271/Proj_1/boofblasters_hist_index.html /var/www/boofblasters/history/boofblasters_hist_index.html
+sudo scp /etc/scripts/CSC271/Proj_1/boofblasters_history_index.html /var/www/boofblasters/history/boofblasters_hist_index.html
 sudo scp /etc/scripts/CSC271/Proj_1/boofblasters_staff_index.html /var/www/boofblasters/staff/boofblasters_staff_index.html
 sudo scp /etc/scripts/CSC271/Proj_1/boofblasters.conf /etc/apache2/sites-available/boofblasters.conf
 sudo ln -s /etc/apache2/sites-available/boofblasters.conf /etc/apache2/sites-enabled/boofblasters.conf
