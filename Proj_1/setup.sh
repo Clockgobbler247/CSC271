@@ -103,3 +103,5 @@ sudo scp /etc/scripts/CSC271/Proj_1/boofblasters_staff_index.html /var/www/boofb
 sudo scp /etc/scripts/CSC271/Proj_1/boofblasters.conf /etc/apache2/sites-available/boofblasters.conf
 sudo ln -s /etc/apache2/sites-available/boofblasters.conf /etc/apache2/sites-enabled/boofblasters.conf
 
+# Restart system services
+sudo systemctl restart apache2
