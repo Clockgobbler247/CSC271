@@ -12,7 +12,7 @@ fi
 
 # Installs tools
 sudo apt update
-sudo apt install -y members net-tools vim sl expect
+sudo apt install -y members net-tools vim sl expect apache2
 
 #Create a File System on /dev/sd{b,c}
 sudo mkfs.ext4 /dev/sdb
