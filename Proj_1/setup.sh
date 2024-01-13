@@ -66,7 +66,9 @@ else
 fi
 
 # Creating users
-sudo adduser --disabled-password --gecos "" {webdev1,ceditor,testusr}
+sudo adduser --disabled-password --gecos "" webdev1
+sudo adduser --disabled-password --gecos "" ceditor
+sudo adduser --disabled-password --gecos "" testusr
 
 USERNAME_LIST="webdev1 ceditor testusr"
 
