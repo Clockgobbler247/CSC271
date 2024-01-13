@@ -21,7 +21,7 @@ sudo mkfs.ext4 /dev/sdc
 # Changing the mount point of /var/www to /dev/sdb
 sudo mkdir /mnt/tmp
 sudo mount /dev/sdb /mnt/tmp
-sudo rsync -avx /var/www/* /mnt/tmp/
+sudo rsync -avx /var/www /mnt/tmp/
 sudo umount /mnt/tmp
 sudo mount /dev/sdb /var/www
 
@@ -82,7 +82,9 @@ sudo groupadd editors
 sudo groupadd allstaff
 sudo usermod -aG developers webdev1
 sudo usermod -aG editors ceditor
-sudo usermod -aG allstaff {webdev1,ceditor,testusr}
+sudo usermod -aG allstaff webdev1
+sudo usermod -aG allstaff ceditor
+sudo usermod -aG allstaff testusr
 
 
 # Creating directories and movinf .conf and .html files
@@ -93,8 +95,3 @@ sudo scp /etc/scripts/CSC271/Proj_1/boofblasters_staff_index.html /var/www/boofb
 sudo scp /etc/scripts/CSC271/Proj_1/boofblasters.conf /etc/apache2/sites-available/boofblasters.conf
 sudo ln -s /etc/apache2/sites-available/boofblasters.conf /etc/apache2/sites-enabled/boofblasters.conf
 
-# Changing permissions
-sudo chown -R root:developers /etc/apache2/
-sudo chown -R root:editors /var/www/
-sudo chmod -R 771 /etc/apache2/
-sudo chmod -R 771 /var/www/
