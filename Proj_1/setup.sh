@@ -21,9 +21,9 @@ sudo mkfs.ext4 /dev/sdc
 # Changing the mount point of /var/www to /dev/sdb
 sudo mkdir /mnt/tmp
 sudo mount /dev/sdb /mnt/tmp
-sudo rsync -avx /var/www /mnt/tmp/
+sudo rsync -avx /var/www/ /mnt/tmp/
 sudo umount /mnt/tmp
-sudo mount /dev/sdb /var/www
+sudo mount /dev/sdb /var/www/
 
 # Aquire the UUID for /dev/sdb
 result=$(sudo blkid -o value -s UUID "/dev/sdb")
@@ -45,7 +45,7 @@ fi
 
 # Changing the mount point of /backups to /dev/sdc
 sudo mkdir -p /backups/web-servers
-sudo mount /dev/sdb /backups
+sudo mount /dev/sdc /backups
 
 # Aquire the UUID for /dev/sdc
 result=$(sudo blkid -o value -s UUID "/dev/sdc")
@@ -70,11 +70,19 @@ sudo adduser --disabled-password --gecos "" webdev1
 sudo adduser --disabled-password --gecos "" ceditor
 sudo adduser --disabled-password --gecos "" testusr
 
-USERNAME_LIST="webdev1 ceditor testusr"
+expect << EOF
+set NEW_PASSWORD "changeme"   ;# Replace with the desired new password
+set USERNAME_LIST {webdev1 ceditor testusr}
 
-for username in $USERNAME_LIST; do
-    echo -e "$username\nchangeme\nchangeme" | passwd $username
-done
+foreach username \$USERNAME_LIST {
+    spawn passwd \$username
+    expect "New password: "
+    send "\$NEW_PASSWORD\r"
+    expect "Retype new password: "
+    send "\$NEW_PASSWORD\r"
+    expect eof                    ;
+}
+EOF
 
 # Creating Groups and assigning users
 sudo groupadd developers
