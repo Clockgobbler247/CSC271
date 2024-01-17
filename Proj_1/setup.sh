@@ -46,7 +46,10 @@ fi
 # Changing the mount point of /backups to /dev/sdc
 sudo mkdir /backups
 sudo mount /dev/sdc /backups
-sudo mkdir /backups/web-server
+
+#Used to make directories for backups
+sudo mkdir -p /backups/web-server/{full_backup,diff_backup}
+sudo mkdir /backups/web-server/full_backup/{new,old}
 
 # Aquire the UUID for /dev/sdc
 result=$(sudo blkid -o value -s UUID "/dev/sdc")
