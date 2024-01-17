@@ -101,6 +101,11 @@ sudo scp /etc/scripts/CSC271/Proj_1/boofblasters_history_index.html /var/www/boo
 sudo scp /etc/scripts/CSC271/Proj_1/boofblasters_staff_index.html /var/www/boofblasters/staff/index.html
 sudo scp /etc/scripts/CSC271/Proj_1/boofblasters.conf /etc/apache2/sites-available/boofblasters.conf
 sudo ln -s /etc/apache2/sites-available/boofblasters.conf /etc/apache2/sites-enabled/boofblasters.conf
+sudo scp /etc/scripts/CSC271/Proj_1/Emmafreshair.png /var/www/boofblasters/staff/Emmafreshair.png
+sudo scp /etc/scripts/CSC271/Proj_1/johnvaporizer.png /var/www/boofblasters/staff/johnvaporizer.png
+sudo scp /etc/scripts/CSC271/Proj_1/e91_1.png /var/www/boofblasters/e91_1.png
+sudo scp /etc/scripts/CSC271/Proj_1/e91_1.png /var/www/boofblasters/staff/e91_1.png
+sudo scp /etc/scripts/CSC271/Proj_1/e91_1.png /var/www/boofblasters/history/e91_1.png
 
 #Setting permissions
 sudo chown -R root:developers /etc/apache2/
