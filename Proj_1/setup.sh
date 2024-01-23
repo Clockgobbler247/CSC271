@@ -109,6 +109,10 @@ sudo scp /etc/scripts/CSC271/Proj_1/johnvaporizer.png /var/www/boofblasters/staf
 sudo scp /etc/scripts/CSC271/Proj_1/e91_1.png /var/www/boofblasters/e91_1.png
 sudo scp /etc/scripts/CSC271/Proj_1/e91_1.png /var/www/boofblasters/staff/e91_1.png
 sudo scp /etc/scripts/CSC271/Proj_1/e91_1.png /var/www/boofblasters/history/e91_1.png
+sudo scp /etc/scripts/CSC271/Proj_1/favicon.ico /var/www/boofblasters/favicon.ico
+sudo scp /etc/scripts/CSC271/Proj_1/favicon.ico /var/www/boofblasters/history/favicon.ico
+sudo scp /etc/scripts/CSC271/Proj_1/favicon.ico /var/www/boofblasters/staff/favicon.ico
+
 
 #Setting permissions
 sudo chown -R root:developers /etc/apache2/
