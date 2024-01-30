@@ -120,5 +120,9 @@ sudo chown -R root:editors /var/www/
 sudo chmod -R 770 /etc/apache2/
 sudo chmod -R 770 /var/www/
 
+#Setting up Firewall
+sudo ufw enable
+sudo ufw allow Apache
+
 # Restart system services
 sudo systemctl restart apache2
