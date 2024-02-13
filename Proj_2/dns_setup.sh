@@ -29,9 +29,9 @@ EOF
 # Creating directories and moving files
 sudo mkdir -p /backups/dns-server/{full_backup,diff_backup}
 sudo mkdir /backups/dns-server/full_backup/{new,old}
-sudo scp -f /etc/scripts/CSC271/Proj_2/named.conf.options /etc/bind/named.conf.options
-sudo scp -f /etc/scripts/CSC271/Proj_2/named.conf.local /etc/bind/named.conf.local
-sudo scp -f /etc/scripts/CSC271/Proj_2/default.named /etc/default/named
+sudo cp -f /etc/scripts/CSC271/Proj_2/named.conf.options /etc/bind/named.conf.options
+sudo cp -f /etc/scripts/CSC271/Proj_2/named.conf.local /etc/bind/named.conf.local
+sudo cp -f /etc/scripts/CSC271/Proj_2/default.named /etc/default/named
 sudo mv /etc/scripts/CSC271/Proj_2/forward.boofblasters.com /etc/bind/forward.boofblasters.com
 sudo mv /etc/scripts/CSC271/Proj_2/reverse.boofblasters.com /etc/bind/reverse.boofblasters.com
 
