@@ -25,3 +25,7 @@ foreach username \$USERNAME_LIST {
     expect eof                    ;
 }
 EOF
+
+# Creating directories and moving files
+sudo mkdir -p /backups/dns-server/{full_backup,diff_backup}
+sudo mkdir /backups/dns-server/full_backup/{new,old}
