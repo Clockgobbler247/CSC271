@@ -1,0 +1,9 @@
+dn: cn=local_users,ou=groups,dc=boofblasters,dc=com
+objectClass: posixGroup
+cn: local_users
+gidNumber: 6000
+
+dn: cn=net_users,ou=groups,dc=boofblasters,dc=com
+objectClass: posixGroup
+cn: net_users
+gidNumber: 6001
